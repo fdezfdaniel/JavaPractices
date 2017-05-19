@@ -51,9 +51,14 @@ public enum EnumMaps {
 
         @Override
         public String getSpecs() {
-            return "TreeMap: It doesn't allow null key, allows null values. Not ordered.  Sorted by natural order or custom rules.";
+            return "TreeMap: It doesn't allow null key, allows null values. Not ordered. " +
+                    "Sorted by natural order or custom rules. Objects used as keys must implements Comparable.";
         }
     };
+
+    private EnumMaps(){
+        System.out.println("Contains Key value pairs. Doesn't allow duplicates.");
+    }
 
     public abstract Map getMap();
 

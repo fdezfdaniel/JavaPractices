@@ -1,9 +1,10 @@
-package resources;
+package resources.pojos;
 
 /**
  * Created by dfernandez on 19/05/2017.
  */
 public class Person implements Comparable<Person>{
+    private int id;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -50,5 +51,13 @@ public class Person implements Comparable<Person>{
     @Override
     public int compareTo(Person o) {
         return firstName.compareTo(o.getFirstName());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

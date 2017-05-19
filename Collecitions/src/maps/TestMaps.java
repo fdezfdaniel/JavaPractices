@@ -1,7 +1,7 @@
 package maps;
 
 import resources.Enums.EnumMaps;
-import resources.Person;
+import resources.pojos.Person;
 
 import java.util.Collections;
 import java.util.Hashtable;
