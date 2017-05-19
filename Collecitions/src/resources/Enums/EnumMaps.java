@@ -1,4 +1,4 @@
-package maps;
+package resources.Enums;
 
 import java.util.Map;
 import java.util.Hashtable;
@@ -17,8 +17,8 @@ public enum EnumMaps {
         }
 
         @Override
-        public String getCaracteristicas() {
-            return "Hashtable: No permite llave ni valor nulos. No tiene orden de inserción ni se puede ordenar";
+        public String getSpecs() {
+            return "Hashtable: It doesn't allow null key neither null values. Not ordered. Not sorted.";
         }
     },
     HashMap {
@@ -28,8 +28,8 @@ public enum EnumMaps {
         }
 
         @Override
-        public String getCaracteristicas() {
-            return "HashMap: Permite que su llave y/o su valor sean nulos. No tiene orden de inserción ni se puede ordenar";
+        public String getSpecs() {
+            return "HashMap: It allows null key and null values. Not ordered. Not sorted.";
         }
     },
     LinkedHashMap {
@@ -39,8 +39,8 @@ public enum EnumMaps {
         }
 
         @Override
-        public String getCaracteristicas() {
-            return "LinkedHashMap: Permite que su llave y/o su valor sean nulos. Tiene orden de inserción, no se puede ordenar\"";
+        public String getSpecs() {
+            return "LinkedHashMap: It allows null key and null values. It's ordered by insertion order. Not sorted.";
         }
     },
     TreeMap {
@@ -50,13 +50,12 @@ public enum EnumMaps {
         }
 
         @Override
-        public String getCaracteristicas() {
-            return "TreeMap: No permite que su llave sea nula, permite que su valor sea nulo. No tiene orden de inseción. " +
-                    "Se puede usar un orden natural o uno custom";
+        public String getSpecs() {
+            return "TreeMap: It doesn't allow null key, allows null values. Not ordered.  Sorted by natural order or custom rules.";
         }
     };
 
     public abstract Map getMap();
 
-    public abstract String getCaracteristicas();
+    public abstract String getSpecs();
 }

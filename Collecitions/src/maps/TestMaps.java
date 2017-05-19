@@ -1,5 +1,8 @@
 package maps;
 
+import resources.Enums.EnumMaps;
+import resources.Person;
+
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Map;
@@ -11,47 +14,71 @@ public class TestMaps {
         testMaps();
     }
 
-    private static void printMaps(Map<String, String> mapa) {
-        for (Map.Entry entry : mapa.entrySet()) {
-            System.out.println("llave: " + entry.getKey() + " valor: " + entry.getValue());
+    private static void printMap(Map<?,?> map) {
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println("key: " + entry.getKey() + " value: " + entry.getValue());
         }
     }
 
     private static void testMaps() {
-        printMaps(fillMaps(buildMaps(EnumMaps.HashMap)));
-        printMaps(fillMaps(buildMaps(EnumMaps.Hashtable)));
-        printMaps(fillMaps(buildMaps(EnumMaps.LinkedHashMap)));
-        printMaps(fillMaps(buildMaps(EnumMaps.TreeMap)));
+        printMap(fillMap(buildMap(EnumMaps.Hashtable)));
+        printMap(fillMap(buildMap(EnumMaps.HashMap)));
+        printMap(fillMap(buildMap(EnumMaps.LinkedHashMap)));
+        printMap(fillMap(buildMap(EnumMaps.TreeMap)));
+        System.out.println("-------Using object Person-------");
+        printMap(fillMapPersonObject(buildMap(EnumMaps.Hashtable)));
+        printMap(fillMapPersonObject(buildMap(EnumMaps.HashMap)));
+        printMap(fillMapPersonObject(buildMap(EnumMaps.LinkedHashMap)));
+        printMap(fillMapPersonObject(buildMap(EnumMaps.TreeMap)));
     }
 
-    private static Map buildMaps(EnumMaps type) {
+    private static Map buildMap(EnumMaps type) {
         switch (type) {
             case Hashtable:
-                System.out.println(EnumMaps.Hashtable.getCaracteristicas());
+                System.out.println(EnumMaps.Hashtable.getSpecs());
                 return EnumMaps.Hashtable.getMap();
             case HashMap:
-                System.out.println(EnumMaps.HashMap.getCaracteristicas());
+                System.out.println(EnumMaps.HashMap.getSpecs());
                 return EnumMaps.HashMap.getMap();
             case LinkedHashMap:
-                System.out.println(EnumMaps.LinkedHashMap.getCaracteristicas());
+                System.out.println(EnumMaps.LinkedHashMap.getSpecs());
                 return EnumMaps.LinkedHashMap.getMap();
             case TreeMap:
-                System.out.println(EnumMaps.TreeMap.getCaracteristicas());
+                System.out.println(EnumMaps.TreeMap.getSpecs());
                 return EnumMaps.TreeMap.getMap();
         }
         return Collections.emptyMap();
     }
 
-    private static Map fillMaps(Map mapa) {
-        mapa.put("r", "r");
-        mapa.put("a", "a");
-        mapa.put("b", "b");
-        mapa.put("c", "c");
-        mapa.put("d", "d");
-        if (!(mapa instanceof Hashtable) && !(mapa instanceof TreeMap)) {
-            mapa.put("z", null);
-            mapa.put(null, null);
+    private static Map<String, String> fillMap(Map map) {
+        map.put("r", "r");
+        map.put("a", "a");
+        map.put("b", "b");
+        map.put("c", "c");
+        map.put("d", "d");
+        if (!(map instanceof Hashtable) && !(map instanceof TreeMap)) {
+            map.put("z", null);
+            map.put(null, null);
         }
-        return mapa;
+        return map;
+    }
+
+    private static Map<Person, Person> fillMapPersonObject(Map<Person, Person> map){
+        Person dad = new Person();
+        dad.setFirstName("Homer");
+        dad.setMiddleName("J.");
+        dad.setLastName("Simpson");
+        dad.setAddress("742 Evergreen Terrace");
+        Person mom = new Person();
+        mom.setFirstName("Marjorie");
+        mom.setLastName("Bouvier Simpson");
+        Person son = new Person();
+        son.setFirstName("Bartholomew");
+        son.setMiddleName("J.");
+        son.setLastName("Simpson");
+        map.put(mom,mom);
+        map.put(dad,dad);
+        map.put(son,son);
+        return map;
     }
 }
