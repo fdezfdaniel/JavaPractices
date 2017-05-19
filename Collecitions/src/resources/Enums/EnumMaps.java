@@ -56,7 +56,7 @@ public enum EnumMaps {
         }
     };
 
-    private EnumMaps(){
+    EnumMaps(){
         System.out.println("Contains Key value pairs. Doesn't allow duplicates.");
     }
 
