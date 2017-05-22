@@ -50,18 +50,25 @@ public class TestSets {
         max.setId(1);
         Dog lucy = new Dog();
         lucy.setName("Lucy");
+        lucy.setAlias("lucy");
         lucy.setId(2);
         lucy.setSex("Female");
         set.add(lucy);
         set.add(lucy);
-        set.add(max);
-        lucy.setAlias("lucy");
         set.add(lucy);
+        set.add(lucy);
+        set.add(max);
         Dog rocky = new Dog();
         rocky.setId(3);
         rocky.setName("Rocky");
         rocky.setSex("Male");
         set.add(rocky);
+        Dog max2 = new Dog();
+        max2.setName("Maximilian");
+        max2.setAlias("Max");
+        max2.setSex("Male");
+        max2.setId(1);
+        set.add(max2);
         return set;
     }
 

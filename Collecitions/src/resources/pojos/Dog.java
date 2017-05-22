@@ -60,4 +60,28 @@ public class Dog implements Comparable<Dog>{
         return String.valueOf(new StringBuilder().append(id).append(" ").append(name).append(" ").append(alias).
                 append(" ").append(sex));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Dog dog = (Dog) o;
+
+        if (getId() != dog.getId()) return false;
+        if (getName() != null ? !getName().equals(dog.getName()) : dog.getName() != null) return false;
+        if (getAlias() != null ? !getAlias().equals(dog.getAlias()) : dog.getAlias() != null) return false;
+        if (getSex() != null ? !getSex().equals(dog.getSex()) : dog.getSex() != null) return false;
+        return getAddress() != null ? getAddress().equals(dog.getAddress()) : dog.getAddress() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getAlias() != null ? getAlias().hashCode() : 0);
+        result = 31 * result + (getSex() != null ? getSex().hashCode() : 0);
+        result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+        return result;
+    }
 }
